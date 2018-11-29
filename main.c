@@ -1,9 +1,9 @@
 #include <stdio.h>
 #include <stdlib.h>
-
+#include "keyword.h"
 /* run this program using the console pauser or add your own getch, system("pause") or input loop */
 
-int is_whiltespace(char c)
+int is_whitespace(char c)
 {
 	if(c == ' '||
 	   c == '\t'||
@@ -21,13 +21,13 @@ int fget_word(FILE *fp, char *word)
 	char c;
 	int cnt;
 		
-	while ((c=fget(fp)) != EOF)
+	while ((c=fgetc(fp)) != EOF)
 	{
 	if (is_whitespace(c) == 0 )
 		{
 			break;
 		}
-			
+   }
 	if ( c == EOF)
 	{
 		return 0;
@@ -48,7 +48,7 @@ int fget_word(FILE *fp, char *word)
 	
 	return cnt;
 }
-	
+
 
 
 
@@ -73,16 +73,17 @@ int main(int argc, char *argv[]) {
 	}
 	while (fget_word ( fp, word)!=0)
 	{
-		printf("%s\n", word);
+		count_word(word);
 	}
+	print_word();
 	
 	fclose(fp);
-	}
+	
 	
 	//word reading
 	
 	
 	
-	
 	return 0;
+
 }
